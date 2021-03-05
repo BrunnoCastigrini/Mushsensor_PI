@@ -1,0 +1,60 @@
+CREATE DATABASE cogumelo;
+USE cogumelo;
+CREATE TABLE clientes(idCliente int primary key, cpf char(11), nome varchar(40), 
+senha varchar(20), estado char(2), cidade varchar(20));
+
+ALTER TABLE clientes MODIFY idCliente int auto_increment;
+INSERT INTO clientes VALUES 
+(500, '17894808091', 'Horácio Oliveira','*****', 'SP', 'São Paulo');
+
+ALTER TABLE clientes ADD email varchar(50);
+UPDATE clientes SET email = 'Horacio2009@outlook.com' where idCliente = 500;
+
+desc clientes;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| idCliente | int         | NO   | PRI | NULL    | auto_increment |
+| cpf       | char(11)    | YES  |     | NULL    |                |
+| nome      | varchar(40) | YES  |     | NULL    |                |
+| senha     | varchar(20) | YES  |     | NULL    |                |
+| estado    | char(2)     | YES  |     | NULL    |                |
+| cidade    | varchar(20) | YES  |     | NULL    |                |
+| email     | varchar(50) | YES  |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+
+ALTER TABLE clientes DROP idCliente;
+ALTER TABLE clientes MODIFY cpf char(11) primary key;
+DESC clientes;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| cpf    | char(11)    | NO   | PRI | NULL    |       |
+| nome   | varchar(40) | YES  |     | NULL    |       |
+| senha  | varchar(20) | YES  |     | NULL    |       |
+| estado | char(2)     | YES  |     | NULL    |       |
+| cidade | varchar(20) | YES  |     | NULL    |       |
+| email  | varchar(50) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+
+INSERTINTO clientes VALUES 
+('64776729016', 'Arthur Santos de Barbosa', '****', 'MG', 'Belo Horizonte','fidon91019@gmail.com'), 
+('00390232068', 'Lang Yi', '******', 'AL', 'Maceió', 'solken91019@gmail.com'),
+('83386280005', 'Gertrúdio Antunes','*********', 'SP', 'São Paulo', 'gertr542@live.com'),
+('32041208058','Riana Roriz Penha','**********', 'SP', 'Suzano', 'Rorizz@yahoo.com.br'), 
+('91576153061', 'Debora Guimarães Carmona', '****', 'SP', 'Mogi Das Cruzes', 'Deboracarmona@outlook.com');
+
+ALTER TABLE clientes MODIFY cidade varchar(40);
+SELECT * FROM clientes ORDER BY estado;
++-------------+--------------------------+------------+--------+-----------------+---------------------------+
+| cpf         | nome                     | senha      | estado | cidade          | email                     |
++-------------+--------------------------+------------+--------+-----------------+---------------------------+
+| 00390232068 | Lang Yi                  | ******     | AL     | Maceió          | solken91019@gmail.com     |
+| 64776729016 | Arthur Santos de Barbosa | ****       | MG     | Belo Horizonte  | fidon91019@gmail.com      |
+| 17894808091 | Horácio Oliveira         | *****      | SP     | São Paulo       | Horacio2009@outlook.com   |
+| 32041208058 | Riana Roriz Penha        | ********** | SP     | Suzano          | Rorizz@yahoo.com.br       |
+| 83386280005 | Gertrúdio Antunes        | *********  | SP     | São Paulo       | gertr542@live.com         |
+| 91576153061 | Debora Guimarães Carmona | ****       | SP     | Mogi Das Cruzes | Deboracarmona@outlook.com |
++-------------+--------------------------+------------+--------+-----------------+---------------------------+
+
+
