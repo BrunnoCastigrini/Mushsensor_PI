@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+    <style>
+        body{
+            background-image: url(https://pennystocks.com/wp-content/uploads/2020/06/psychedelic-penny-stocks-to-watch-mushroom-stocks.jpg);
+            background-size: 100%;
+        }
+    </style>
+</head>
+<body>
+    <center><h1 style="background-color: rgb(44, 150, 44);">Simulador Financeiro</h1></center>
+    <span style="background-color:  rgb(44, 150, 44);"> Tipo de cogumelo:</span>
+    <input id="tipo" placeholder="Champignon,Shimeji,etc."><br><br>
+    <span style="background-color:  rgb(44, 150, 44);"> Capacidade produtiva:</span>
+    <input id="capacidade" placeholder="Quanto você produz?"><br><br>
+    <span style="background-color:  rgb(44, 150, 44);"> Custo do serviço:</span>
+    <span style="background-color: white;">R$299,99 mensais</span><br><br>
+    <span style="background-color:  rgb(44, 150, 44);">Preço de venda:</span>
+    <input id="venda" placeholder="Por quanto você vende?"><br><br>
+    <button onclick="economia()">Meu faturamento</button><br><br>
+    <div id="div_msg" style="background-color: white; width: 450px;"></div>
+    
+</body>
+</html>
+<script>
+    function economia(){
+        var ValorLucro = Number (venda.value * capacidade.value -299.99);
+        div_msg.innerHTML = `Você ganhará por mês:<u>R$ ${ValorLucro} </u> com a venda de` +` `+ tipo.value;
+    }
+</script>
