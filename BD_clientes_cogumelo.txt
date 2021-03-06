@@ -58,3 +58,19 @@ SELECT * FROM clientes ORDER BY estado;
 +-------------+--------------------------+------------+--------+-----------------+---------------------------+
 
 
+ALTER TABLE clientes ADD plano varchar(10);
+UPDATE clientes SET plano = 'Anual' WHERE estado = 'SP';
+UPDATE clientes SET plano = 'Trimestral' WHERE estado = 'MG';
+UPDATE clientes SET plano = 'Semestral' WHERE estado = 'AL';
+
+select * from clientes;
++-------------+--------------------------+------------+--------+-----------------+---------------------------+------------+
+| cpf         | nome                     | senha      | estado | cidade          | email                     | plano      |
++-------------+--------------------------+------------+--------+-----------------+---------------------------+------------+
+| 00390232068 | Lang Yi                  | ******     | AL     | Maceió          | solken91019@gmail.com     | Semestral  |
+| 17894808091 | Horácio Oliveira         | *****      | SP     | São Paulo       | Horacio2009@outlook.com   | Anual      |
+| 32041208058 | Riana Roriz Penha        | ********** | SP     | Suzano          | Rorizz@yahoo.com.br       | Anual      |
+| 64776729016 | Arthur Santos de Barbosa | ****       | MG     | Belo Horizonte  | fidon91019@gmail.com      | Trimestral |
+| 83386280005 | Gertrúdio Antunes        | *********  | SP     | São Paulo       | gertr542@live.com         | Anual      |
+| 91576153061 | Debora Guimarães Carmona | ****       | SP     | Mogi Das Cruzes | Deboracarmona@outlook.com | Anual      |
++-------------+--------------------------+------------+--------+-----------------+---------------------------+------------+
