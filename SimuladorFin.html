@@ -6,32 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador Financeiro</title>
-    <style>
-        body {
-            background-image: url(https://pennystocks.com/wp-content/uploads/2020/06/psychedelic-penny-stocks-to-watch-mushroom-stocks.jpg);
-            background-size: 100%;
-        }
-        
-        h1 {
-            background-color: rgb(44, 150, 44);
-        }
-    </style>
+    <link rel="Stylesheet" href="style.css">
+    <link rel="icon" href="cog.png">
+
 </head>
 
 <body>
     <center>
-        <h1>Simulador Financeiro</h1>
+         <h1> <img class="cog1"  src="cog.png"> Simulador Financeiro <img class="cog2" src="cog.png"> </h1>   
     </center>
-    <span class="funcionario">Quanto você paga a um funcionário para verificar o termo higrômetro?</span>
-    <input type="text" id="salario" placeholder="00.00"><br><br>
-    <span class="investir">Quanto você planeja investir?</span>
-    <input type="text" id="investimento" placeholder="00.00"><br><br>
-    <span class="tempo">E por quanto tempo?</span>
-    <input type="text" id="time" placeholder="em meses"><br><br>
-    <button onclick="result()">Consultar</button><br><br>
-    <div id="resultado"></div><br>
-    <div id="plano_indicado"></div><br>
-    <div id="nossos_planos"></div>
+   <center> <span class="funcionario">Quanto você paga a um funcionário para verificar o termo higrômetro?</span> <br> <br>
+    <input class="in1" type="text" id="salario" placeholder="00.00"> </center><br><br> 
+
+    <hr> <br>
+
+    <center> <span class="investir">Quanto você planeja investir?</span> <br>  <br>
+    <input class="in2" type="text" id="investimento" placeholder="00.00"> </center> <br><br> 
+
+    <hr> <br>
+
+    <center><span class="tempo">E por quanto tempo?</span> <br> <br>
+    <input class="in3" type="text" id="time" placeholder="em meses"></center> <br><br>
+
+
+    <center> <button class="botao1" onclick="result()">Consultar</button> </center><br><br>
+
+    <center> <div class="cl1" id="resultado"></div </center><br>
+    <center><div class="cl2" id="plano_indicado"></div> </center><br>
+    <center><div class="cl3" id="nossos_planos"></div> </center>
 
 </body>
 <!--If(input > 0 and input < 400) 
@@ -43,7 +45,7 @@
         {
             var salario_h = (Number(salario.value) + Number(100));
             var total_comum = Number(salario.value * time.value) + Number(99.00);
-            resultado.innerHTML = `O valor gasto com um plano comum será de R$${salario.value*time.value} 
+            resultado.innerHTML = `O valor gasto com um plano comum será de R$${salario.value * time.value} 
             com funcionário mais R$ 100,00 com um termo higrômetro, resultando em R$${total_comum}`
 
         }
@@ -65,12 +67,14 @@
         if (investimento.value > 2000) {
             plano_indicado.innerHTML = `O plano mais indicado para você é o nosso 
             plano anual! Confira mais informações sobre os planos abaixo: `
-        } {
-            nossos_planos.innerHTML += `Com o plano mensal você economizará R$${salario_h - 400} por mês <br>`
-            nossos_planos.innerHTML += `Com o plano trimestral você economizará R$${salario_h - 350} por mês <br>`
-            nossos_planos.innerHTML += `Com o plano semestral você economizará R$${salario_h - 320} por mês <br>`
-            nossos_planos.innerHTML += `Com o plano anual você economizará R$${salario_h - 300} por mês <br>`
-
+        }
+        
+        {
+            nossos_planos.innerHTML = 
+            `Com o plano mensal você economizará R$${salario_h - 400} por mês <br>
+             Com o plano trimestral você economizará R$${salario_h - 350} por mês <br>
+              Com o plano semestral você economizará R$${salario_h - 320} por mês <br>
+              Com o plano anual você economizará R$${salario_h - 300} por mês <br>`
 
 
         }
