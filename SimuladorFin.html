@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -28,10 +28,10 @@
     <input type="text" id="investimento" placeholder="00.00"><br><br>
     <span class="tempo">E por quanto tempo?</span>
     <input type="text" id="time" placeholder="em meses"><br><br>
-    <button onclick="result()">Consultar</button>
-    <div id="resultado"></div>
-
-
+    <button onclick="result()">Consultar</button><br><br>
+    <div id="resultado"></div><br>
+    <div id="plano_indicado"></div><br>
+    <div id="nossos_planos"></div>
 
 </body>
 <!--If(input > 0 and input < 400) 
@@ -40,8 +40,38 @@
 </html>
 <script>
     function result() {
-        if ((investimento.value > 0) & (investimento.value < 400)) {
-            alert("Satanás");
+        {
+            var salario_h = (Number(salario.value) + Number(100));
+            var total_comum = Number(salario.value * time.value) + Number(99.00);
+            resultado.innerHTML = `O valor gasto com um plano comum será de R$${salario.value*time.value} 
+            com funcionário mais R$ 100,00 com um termo higrômetro, resultando em R$${total_comum}`
+
+        }
+        if ((investimento.value > 0) & (investimento.value <= 400)) {
+            plano_indicado.innerHTML = `O plano mais indicado para você é o nosso 
+            plano mensal! Confira mais informações sobre os planos abaixo: `
+
+        }
+        if ((investimento.value > 400) & (investimento.value <= 1200)) {
+            plano_indicado.innerHTML = `O plano mais indicado para você é o nosso 
+            plano trimenstral! Confira mais informações sobre os planos abaixo: `
+
+        }
+        if ((investimento.value > 1200) & (investimento.value <= 2000)) {
+            plano_indicado.innerHTML = `O plano mais indicado para você é o nosso 
+            plano semestral! Confira mais informações sobre os planos abaixo: `
+
+        }
+        if (investimento.value > 2000) {
+            plano_indicado.innerHTML = `O plano mais indicado para você é o nosso 
+            plano anual! Confira mais informações sobre os planos abaixo: `
+        } {
+            nossos_planos.innerHTML += `Com o plano mensal você economizará R$${salario_h - 400} por mês <br>`
+            nossos_planos.innerHTML += `Com o plano trimestral você economizará R$${salario_h - 350} por mês <br>`
+            nossos_planos.innerHTML += `Com o plano semestral você economizará R$${salario_h - 320} por mês <br>`
+            nossos_planos.innerHTML += `Com o plano anual você economizará R$${salario_h - 300} por mês <br>`
+
+
 
         }
 
