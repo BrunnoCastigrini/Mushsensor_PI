@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+    <link rel="Stylesheet" href="style.css">
+    <link rel="icon" href="cog.png">
+
+</head>
+
+<body>
+    <center>
+        <h1> <img class="cog1" src="cog.png"> Simulador Financeiro <img class="cog2" src="cog.png"> </h1>
+    </center>
+    <center> <span class="funcionario">Quanto você paga a um funcionário para verificar o termo higrômetro?</span> <br> <br>
+        <input class="in1" type="text" id="salario" placeholder="00.00"> </center><br><br>
+
+    <hr> <br>
+
+    <center> <span class="investir">Quanto você planeja investir?</span> <br> <br>
+        <input class="in2" type="text" id="investimento" placeholder="00.00"> </center> <br><br>
+
+    <hr> <br>
+
+    <center><span class="tempo">E por quanto tempo?</span> <br> <br>
+        <input class="in3" type="text" id="time" placeholder="em meses"></center> <br><br>
+
+
+    <center> <button class="botao1" onclick="result()">Consultar</button> </center><br><br>
+
+    <center>
+        <div class="cl1" id="resultado"></div </center><br>
+        <center>
+            <div class="cl2" id="plano_indicado"></div>
+        </center><br>
+        <center>
+            <div class="cl3" id="nossos_planos"></div>
+        </center>
+
+</body>
+<!--If(input > 0 and input < 400) 
+   Exibe mensagem-->
+
+</html>
+<script>
+    function result() {
+        {
+            var salario_h = (Number(salario.value) + Number(100));
+            var total_comum = Number(salario.value * time.value) + Number(99.00);
+            resultado.innerHTML = `Em um período de ${time.value} meses, o valor gasto com um plano comum será de R$${salario.value * time.value} 
+            com funcionário, mais R$ 100,00 com um termo higrômetro, resultando em R$${total_comum}`
+
+        }
+        if ((investimento.value > 0) & (investimento.value <= 400)) {
+            plano_indicado.innerHTML = `O plano mais indicado para você é o nosso 
+            plano mensal! Confira mais informações sobre os planos abaixo: `
+
+        }
+        if ((investimento.value > 400) & (investimento.value <= 1200)) {
+            plano_indicado.innerHTML = `O plano mais indicado para você é o nosso 
+            plano trimenstral! Confira mais informações sobre os planos abaixo: `
+
+        }
+        if ((investimento.value > 1200) & (investimento.value <= 2000)) {
+            plano_indicado.innerHTML = `O plano mais indicado para você é o nosso 
+            plano semestral! Confira mais informações sobre os planos abaixo: `
+
+        }
+        if (investimento.value > 2000) {
+            plano_indicado.innerHTML = `O plano mais indicado para você é o nosso 
+            plano anual! Confira mais informações sobre os planos abaixo: `
+        }
+
+        {
+            nossos_planos.innerHTML =
+                `Com o plano mensal você economizará R$${salario_h - 400} por mês <br>
+                 Com o plano trimestral você economizará R$${salario_h - 350} por mês <br>
+                 Com o plano semestral você economizará R$${salario_h - 320} por mês <br>
+                 Com o plano anual você economizará R$${salario_h - 300} por mês <br>`
+
+
+        }
+
+    }
+</script>
