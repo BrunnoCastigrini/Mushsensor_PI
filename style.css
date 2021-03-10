@@ -6,39 +6,34 @@ body {
 h1 {
     background-color: rgb(226, 87, 87);
     width: 30%;
-    border-radius: 20px ;
+    border-radius: 20px;
     font-family: monospace;
     font-weight: 700;
 }
 
 hr {
-   
     width: 73%;
-   
 }
 
 .funcionario {
-
     font-size: 30px;
     font-family: monospace;
     font-weight: 900;
 }
 
 .investir {
-
     font-size: 30px;
     font-family: monospace;
     font-weight: 900;
 }
-.tempo {
 
+.tempo {
     font-size: 30px;
     font-family: monospace;
     font-weight: 900;
 }
 
 .botao1 {
-
     border-radius: 40px;
     background-color: rgb(240, 65, 65);
     font-family: monospace;
@@ -46,25 +41,23 @@ hr {
     font-size: 25px;
 }
 
-.in1, .in2 ,.in3 {
-
-    border-radius: 20px ;
+.in1,
+.in2,
+.in3 {
+    border-radius: 20px;
 }
 
-.cl1, .cl2 ,.cl3 {
-
+.cl1,
+.cl2,
+.cl3 {
     font-family: monospace;
     font-weight: 700;
 }
 
 .cog1 {
-
     width: 20px;
-  
 }
 
 .cog2 {
-
     width: 20px;
-    
 }
