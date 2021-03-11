@@ -37,7 +37,7 @@ DESC clientes;
 | email  | varchar(50) | YES  |     | NULL    |       |
 +--------+-------------+------+-----+---------+-------+
 
-INSERTINTO clientes VALUES 
+INSERT INTO clientes VALUES 
 ('64776729016', 'Arthur Santos de Barbosa', '****', 'MG', 'Belo Horizonte','fidon91019@gmail.com'), 
 ('00390232068', 'Lang Yi', '******', 'AL', 'Maceió', 'solken91019@gmail.com'),
 ('83386280005', 'Gertrúdio Antunes','*********', 'SP', 'São Paulo', 'gertr542@live.com'),
