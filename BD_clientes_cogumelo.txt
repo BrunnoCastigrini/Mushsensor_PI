@@ -1,3 +1,132 @@
+CREATE USER 'Consultor'@'localhost' identified by 'cogumelorosa';
+GRANT ALL ON *.* to 'Consultor'@'localhost';
+FLUSH PRIVILEGES;
+mysql -u Consultor -p
+
+CREATE DATABASE cogumelo;
+USE cogumelo;
+CREATE TABLE clientes(idCliente int primary key, cpf char(11), nome varchar(40), 
+senha varchar(20), estado char(2), cidade varchar(20));
+
+ALTER TABLE clientes MODIFY idCliente int auto_increment;
+INSERT INTO clientes VALUES 
+(500, '17894808091', 'Horácio Oliveira','*****', 'SP', 'São Paulo');
+
+ALTER TABLE clientes ADD email varchar(50);
+UPDATE clientes SET email = 'Horacio2009@outlook.com' where idCliente = 500;
+
+desc clientes;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| idCliente | int         | NO   | PRI | NULL    | auto_increment |
+| cpf       | char(11)    | YES  |     | NULL    |                |
+| nome      | varchar(40) | YES  |     | NULL    |                |
+| senha     | varchar(20) | YES  |     | NULL    |                |
+| estado    | char(2)     | YES  |     | NULL    |                |
+| cidade    | varchar(20) | YES  |     | NULL    |                |
+| email     | varchar(50) | YES  |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+
+ALTER TABLE clientes DROP idCliente;
+ALTER TABLE clientes MODIFY cpf char(11) primary key;
+DESC clientes;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| cpf    | char(11)    | NO   | PRI | NULL    |       |
+| nome   | varchar(40) | YES  |     | NULL    |       |
+| senha  | varchar(20) | YES  |     | NULL    |       |
+| estado | char(2)     | YES  |     | NULL    |       |
+| cidade | varchar(20) | YES  |     | NULL    |       |
+| email  | varchar(50) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+
+INSERT INTO clientes VALUES 
+('64776729016', 'Arthur Santos de Barbosa', '****', 'MG', 'Belo Horizonte','fidon91019@gmail.com'), 
+('00390232068', 'Lang Yi', '******', 'AL', 'Maceió', 'solken91019@gmail.com'),
+('83386280005', 'Gertrúdio Antunes','*********', 'SP', 'São Paulo', 'gertr542@live.com'),
+('32041208058','Riana Roriz Penha','**********', 'SP', 'Suzano', 'Rorizz@yahoo.com.br'), 
+('91576153061', 'Debora Guimarães Carmona', '****', 'SP', 'Mogi Das Cruzes', 'Deboracarmona@outlook.com');
+
+ALTER TABLE clientes MODIFY cidade varchar(40);
+SELECT * FROM clientes ORDER BY estado;
++-------------+--------------------------+------------+--------+-----------------+---------------------------+
+| cpf         | nome                     | senha      | estado | cidade          | email                     |
++-------------+--------------------------+------------+--------+-----------------+---------------------------+
+| 00390232068 | Lang Yi                  | ******     | AL     | Maceió          | solken91019@gmail.com     |
+| 64776729016 | Arthur Santos de Barbosa | ****       | MG     | Belo Horizonte  | fidon91019@gmail.com      |
+| 17894808091 | Horácio Oliveira         | *****      | SP     | São Paulo       | Horacio2009@outlook.com   |
+| 32041208058 | Riana Roriz Penha        | ********** | SP     | Suzano          | Rorizz@yahoo.com.br       |
+| 83386280005 | Gertrúdio Antunes        | *********  | SP     | São Paulo       | gertr542@live.com         |
+| 91576153061 | Debora Guimarães Carmona | ****       | SP     | Mogi Das Cruzes | Deboracarmona@outlook.com |
++-------------+--------------------------+------------+--------+-----------------+---------------------------+
+
+ALTER TABLE clientes ADD plano varchar(10);
+UPDATE clientes SET plano = 'Anual' WHERE estado = 'SP';
+UPDATE clientes SET plano = 'Trimestral' WHERE estado = 'MG';
+UPDATE clientes SET plano = 'Semestral' WHERE estado = 'AL';
+
+select * from clientes;
++-------------+--------------------------+------------+--------+-----------------+---------------------------+------------+
+| cpf         | nome                     | senha      | estado | cidade          | email                     | plano      |
++-------------+--------------------------+------------+--------+-----------------+---------------------------+------------+
+| 00390232068 | Lang Yi                  | ******     | AL     | Maceió          | solken91019@gmail.com     | Semestral  |
+| 17894808091 | Horácio Oliveira         | *****      | SP     | São Paulo       | Horacio2009@outlook.com   | Anual      |
+| 32041208058 | Riana Roriz Penha        | ********** | SP     | Suzano          | Rorizz@yahoo.com.br       | Anual      |
+| 64776729016 | Arthur Santos de Barbosa | ****       | MG     | Belo Horizonte  | fidon91019@gmail.com      | Trimestral |
+| 83386280005 | Gertrúdio Antunes        | *********  | SP     | São Paulo       | gertr542@live.com         | Anual      |
+| 91576153061 | Debora Guimarães Carmona | ****       | SP     | Mogi Das Cruzes | Deboracarmona@outlook.com | Anual      |
++-------------+--------------------------+------------+--------+-----------------+---------------------------+------------+
+
+ALTER TABLE clientes ADD CHECK (plano = 'mensal' or plano = 'trimestral' or plano = 'semestral' or plano = 'anual');
+
+CREATE TABLE mushsensor(id int primary key auto_increment, modelo varchar(10), temperatura float default 15.3, dataTemp datetime default current_timestamp);
+ALTER TABLE mushsensor ADD local_estufa varchar(30)
+ALTER TABLE mushsensor MODIFY modelo varchar(10) default 'DHT11';
+
+INSERT INTO mushsensor (temperatura, local_estufa) VALUES 
+(22.3, 'Estufa 002'), 
+(17.8, 'Estufa 2'), 
+(21.0, 'Estufa casa'), 
+(14.0, 'Estufa praia');
+SELECT * FROM mushsensor;
++----+--------+-------------+---------------------+--------------+
+| id | modelo | temperatura | dataTemp            | local_estufa |
++----+--------+-------------+---------------------+--------------+
+|  1 | DHT11  |        22.3 | 2021-03-11 13:00:25 | Estufa 002   |
+|  2 | DHT11  |        17.8 | 2021-03-11 13:00:25 | Estufa 2     |
+|  3 | DHT11  |          21 | 2021-03-11 13:00:25 | Estufa casa  |
+|  4 | DHT11  |          14 | 2021-03-11 13:00:25 | Estufa praia |
++----+--------+-------------+---------------------+--------------+
+
+RENAME TABLE clientes to cliente;
+ALTER TABLE DROP local_estufa;
+
+CREATE TABLE estufa (id_estufa int primary key auto_increment, local_estufa varchar(20) DEFAULT 'SP', qtd_sensores int DEFAULT 1);
++--------------+-------------+------+-----+---------+----------------+
+| Field        | Type        | Null | Key | Default | Extra          |
++--------------+-------------+------+-----+---------+----------------+
+| id_estufa    | int         | NO   | PRI | NULL    | auto_increment |
+| local_estufa | varchar(20) | YES  |     | SP      |                |
+| qtd_sensores | int         | YES  |     | 1       |                |
++--------------+-------------+------+-----+---------+----------------+
+INSERT INTO estufa VALUES (1700, 'SP', 3);
+INSERT INTO estufa (local_estufa, qtd_sensores) VALUES('SP', 2), ('SP', 1), ('MG', 2), ('SP', 4), ('RJ', 2), ('BA', 1);
+
+SELECT * FROM estufa;
++-----------+--------------+--------------+
+| id_estufa | local_estufa | qtd_sensores |
++-----------+--------------+--------------+
+|      1700 | SP           |            3 |
+|      1701 | SP           |            2 |
+|      1702 | SP           |            1 |
+|      1703 | MG           |            2 |
+|      1704 | SP           |            4 |
+|      1705 | RJ           |            2 |
+|      1706 | BA           |            1 |
++-----------+--------------+--------------+
+=======
 create database mushsensors;
 use mushsensors;
 
@@ -32,6 +161,7 @@ insert into cliente values
 (null,'74563531343','Correia','skate123','MG','Santo André','mensal'),
 (null,'96435241241','Ferreira','boy123','ES','São Caetano','trimestral'),
 (null,'23423325242','Bruno','cabelo123','BA','Piraporinha','mensal');
+<<<<<<< HEAD
 
 
 insert into estufa values
@@ -54,3 +184,6 @@ select*from estufa;
 
 select*from sensor;
 
+=======
+>>>>>>> 21f1a8030307afcb78a10db093e1b8c05b6bc0f6
+>>>>>>> 66b8288dd3dc273b2244e569d356488be87e3672

@@ -19,19 +19,19 @@ hr {
 }
 
 .funcionario {
-    font-size: 30px;
+    font-size: 25px;
     font-family: monospace;
     font-weight: 900;
 }
 
 .investir {
-    font-size: 30px;
+    font-size: 25px;
     font-family: monospace;
     font-weight: 900;
 }
 
 .tempo {
-    font-size: 30px;
+    font-size: 25px;
     font-family: monospace;
     font-weight: 900;
 }
@@ -54,7 +54,8 @@ hr {
 .cl2,
 .cl3 {
     font-family: monospace;
-    font-weight: 700;
+    font-weight: 600;
+    font-size: large;
 }
 
 .cog {
