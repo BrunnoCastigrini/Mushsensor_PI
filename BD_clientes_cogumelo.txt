@@ -100,3 +100,5 @@ SELECT * FROM mushsensor;
 |  3 | DHT11  |          21 | 2021-03-11 13:00:25 | Estufa casa  |
 |  4 | DHT11  |          14 | 2021-03-11 13:00:25 | Estufa praia |
 +----+--------+-------------+---------------------+--------------+
+
+RENAME TABLE clientes to cliente;
