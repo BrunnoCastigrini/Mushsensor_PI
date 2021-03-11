@@ -102,3 +102,33 @@ SELECT * FROM mushsensor;
 +----+--------+-------------+---------------------+--------------+
 
 RENAME TABLE clientes to cliente;
+=======
+create database mushsensors;
+use mushsensors;
+
+create table clientes (
+idCliente int primary key auto_increment,
+cpf char(11),
+nome varchar(50),
+senha varchar(20),
+estado char(2),
+cidade varchar(100),
+plano varchar(30),
+check (plano = 'mensal' or plano = 'trimestral' or plano = 'semestral' or plano = 'anual') 
+)auto_increment = 1700;
+
+create table sensor(
+idSensor int primary key auto_increment,
+nomeSensor varchar(40),
+temperatura int,
+statusSensor varchar(30),
+check (statusSensor = 'ativo' or statusSensor = 'inativo' or statusSensor = 'manutenção') 
+)auto_increment = 1700;
+
+insert into clientes values
+(null,'47918319231','Marcos','estrelinha123','RJ','Mauá','trimestral'),
+(null,'64354364355','Felipe','neymar123','SP','Ribeirão Pires','anual'),
+(null,'74563531343','Correia','skate123','MG','Santo André','mensal'),
+(null,'96435241241','Ferreira','boy123','ES','São Caetano','trimestral'),
+(null,'23423325242','Bruno','cabelo123','BA','Piraporinha','mensal');
+>>>>>>> 21f1a8030307afcb78a10db093e1b8c05b6bc0f6
