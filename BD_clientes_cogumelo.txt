@@ -1,3 +1,8 @@
+CREATE USER 'Consultor'@'localhost' identified by 'cogumelorosa';
+GRANT ALL ON *.* to 'Consultor'@'localhost';
+FLUSH PRIVILEGES;
+mysql -u Consultor -p
+
 CREATE DATABASE cogumelo;
 USE cogumelo;
 CREATE TABLE clientes(idCliente int primary key, cpf char(11), nome varchar(40), 
@@ -74,3 +79,24 @@ select * from clientes;
 | 83386280005 | Gertrúdio Antunes        | *********  | SP     | São Paulo       | gertr542@live.com         | Anual      |
 | 91576153061 | Debora Guimarães Carmona | ****       | SP     | Mogi Das Cruzes | Deboracarmona@outlook.com | Anual      |
 +-------------+--------------------------+------------+--------+-----------------+---------------------------+------------+
+
+ALTER TABLE clientes ADD CHECK (plano = 'mensal' or plano = 'trimestral' or plano = 'semestral' or plano = 'anual');
+
+CREATE TABLE mushsensor(id int primary key auto_increment, modelo varchar(10), temperatura float default 15.3, dataTemp datetime default current_timestamp);
+ALTER TABLE mushsensor ADD local_estufa varchar(30)
+ALTER TABLE mushsensor MODIFY modelo varchar(10) default 'DHT11';
+
+INSERT INTO mushsensor (temperatura, local_estufa) VALUES 
+(22.3, 'Estufa 002'), 
+(17.8, 'Estufa 2'), 
+(21.0, 'Estufa casa'), 
+(14.0, 'Estufa praia');
+SELECT * FROM mushsensor;
++----+--------+-------------+---------------------+--------------+
+| id | modelo | temperatura | dataTemp            | local_estufa |
++----+--------+-------------+---------------------+--------------+
+|  1 | DHT11  |        22.3 | 2021-03-11 13:00:25 | Estufa 002   |
+|  2 | DHT11  |        17.8 | 2021-03-11 13:00:25 | Estufa 2     |
+|  3 | DHT11  |          21 | 2021-03-11 13:00:25 | Estufa casa  |
+|  4 | DHT11  |          14 | 2021-03-11 13:00:25 | Estufa praia |
++----+--------+-------------+---------------------+--------------+
