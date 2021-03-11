@@ -62,7 +62,6 @@ SELECT * FROM clientes ORDER BY estado;
 | 91576153061 | Debora Guimarães Carmona | ****       | SP     | Mogi Das Cruzes | Deboracarmona@outlook.com |
 +-------------+--------------------------+------------+--------+-----------------+---------------------------+
 
-
 ALTER TABLE clientes ADD plano varchar(10);
 UPDATE clientes SET plano = 'Anual' WHERE estado = 'SP';
 UPDATE clientes SET plano = 'Trimestral' WHERE estado = 'MG';
@@ -102,6 +101,31 @@ SELECT * FROM mushsensor;
 +----+--------+-------------+---------------------+--------------+
 
 RENAME TABLE clientes to cliente;
+ALTER TABLE DROP local_estufa;
+
+CREATE TABLE estufa (id_estufa int primary key auto_increment, local_estufa varchar(20) DEFAULT 'SP', qtd_sensores int DEFAULT 1);
++--------------+-------------+------+-----+---------+----------------+
+| Field        | Type        | Null | Key | Default | Extra          |
++--------------+-------------+------+-----+---------+----------------+
+| id_estufa    | int         | NO   | PRI | NULL    | auto_increment |
+| local_estufa | varchar(20) | YES  |     | SP      |                |
+| qtd_sensores | int         | YES  |     | 1       |                |
++--------------+-------------+------+-----+---------+----------------+
+INSERT INTO estufa VALUES (1700, 'SP', 3);
+INSERT INTO estufa (local_estufa, qtd_sensores) VALUES('SP', 2), ('SP', 1), ('MG', 2), ('SP', 4), ('RJ', 2), ('BA', 1);
+
+SELECT * FROM estufa;
++-----------+--------------+--------------+
+| id_estufa | local_estufa | qtd_sensores |
++-----------+--------------+--------------+
+|      1700 | SP           |            3 |
+|      1701 | SP           |            2 |
+|      1702 | SP           |            1 |
+|      1703 | MG           |            2 |
+|      1704 | SP           |            4 |
+|      1705 | RJ           |            2 |
+|      1706 | BA           |            1 |
++-----------+--------------+--------------+
 =======
 create database mushsensors;
 use mushsensors;
