@@ -61,3 +61,42 @@ hr {
 .cog2 {
     width: 20px;
 }
+.todos_planos{
+    font-family: monospace;
+    font-size: large;
+    display: none;
+    width: 100%;
+    margin-bottom: 100px;
+    
+}
+.mensal{
+    width: 15%;
+    margin-right: 3%;
+    float: left;
+    margin-left: 15.5%;
+    background-color:#C23B23;
+    border-radius: 6px;
+}
+.trimestral{
+    width: 15%;
+    margin-right: 3%;
+    float: left;
+    background-color:#FF6961;
+    border-radius: 6px;
+}
+.semestral{
+    width: 15%;
+    margin-right: 3%;
+    float: left;
+    background-color:#B7C68B;
+    border-radius: 6px;
+}
+.anual{
+    width: 15%;
+    float: left;
+    background-color:#988270;
+    border-radius: 6px;
+}
+.plans{
+    color:#FDF7C2;
+}

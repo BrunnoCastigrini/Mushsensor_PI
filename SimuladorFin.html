@@ -39,6 +39,23 @@
     </center><br>
     <center>
         <div class="cl3" id="nossos_planos"></div>
+        <br><br>
+        <div id="div_planos" class="todos_planos">
+            <div class="mensal"><b>Plano <i>mensal</i></b>
+                <hr>R$400,00<br><span class="plans">(R$400/mês)</span>
+           </div>
+    
+           <div class="trimestral"><b>Plano <i>trimestral</i></b>
+               <hr>R$1.050,00<br><span class="plans">(R$350/mês)</span>
+           </div>
+    
+           <div class="semestral"><b>Plano <i>semestral</i></b>
+               <hr>R$1.920,00<br><span class="plans">(R$320/mês)</span></div>
+    
+           <div class="anual"><b>Plano <i>anual</i></b>
+               <hr>R$3.600,00<br><span class="plans">(R$300/mês)</span>
+            </div>
+        </div>
     </center>
 
 </body>
@@ -51,7 +68,7 @@
         {
             var salario_h = (Number(salario.value) + Number(100));
             var total_comum = Number(salario.value * time.value) + Number(100);
-            resultado.innerHTML = `Em um período de ${time.value} meses, o valor gasto com um plano comum será de R$${salario.value * time.value} 
+            resultado.innerHTML = `Em um período de ${time.value} meses, o valor gasto com um plano comum será de R$ ${salario.value * time.value} 
             com funcionário, mais R$ 100,00 com um termo higrômetro, resultando em R$${total_comum}`
 
         }
@@ -76,6 +93,7 @@
         }
 
         {
+            div_planos.style.display='block'
             nossos_planos.innerHTML =
                 `Com o plano mensal você economizará R$${salario_h - 400} por mês <br>
                  Com o plano trimestral você economizará R$${salario_h - 350} por mês <br>
