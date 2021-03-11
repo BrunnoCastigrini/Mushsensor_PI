@@ -1,3 +1,6 @@
+::-webkit-scrollbar{
+    width: 1px;
+}
 body {
     background-color: #F0D19E;
     background-size: 100%;
@@ -54,11 +57,7 @@ hr {
     font-weight: 700;
 }
 
-.cog1 {
-    width: 20px;
-}
-
-.cog2 {
+.cog {
     width: 20px;
 }
 .todos_planos{
