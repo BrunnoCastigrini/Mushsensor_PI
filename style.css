@@ -1,5 +1,5 @@
 ::-webkit-scrollbar{
-    width: 1px;
+    width: 0.1px;
 }
 body {
     background-color: #F0D19E;
