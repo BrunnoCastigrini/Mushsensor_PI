@@ -130,7 +130,7 @@ SELECT * FROM estufa;
 create database mushsensors;
 use mushsensors;
 
-create table clientes (
+create table cliente (
 idCliente int primary key auto_increment,
 cpf char(11),
 nome varchar(50),
@@ -144,15 +144,46 @@ check (plano = 'mensal' or plano = 'trimestral' or plano = 'semestral' or plano 
 create table sensor(
 idSensor int primary key auto_increment,
 nomeSensor varchar(40),
-temperatura int,
+temperatura float,
 statusSensor varchar(30),
 check (statusSensor = 'ativo' or statusSensor = 'inativo' or statusSensor = 'manutenção') 
-)auto_increment = 1700;
+)auto_increment = 2700;
 
-insert into clientes values
+create table estufa(
+idEstufa int primary key auto_increment,
+quantidadeDeSensores int,
+TamanhodaEstufa varchar (40)
+);
+
+insert into cliente values
 (null,'47918319231','Marcos','estrelinha123','RJ','Mauá','trimestral'),
 (null,'64354364355','Felipe','neymar123','SP','Ribeirão Pires','anual'),
 (null,'74563531343','Correia','skate123','MG','Santo André','mensal'),
 (null,'96435241241','Ferreira','boy123','ES','São Caetano','trimestral'),
 (null,'23423325242','Bruno','cabelo123','BA','Piraporinha','mensal');
+<<<<<<< HEAD
+
+
+insert into estufa values
+
+(null,'3','303 metros'),
+(null,'4','432 metros'),
+(null,'7','765 metros'),
+(null,'9','932 metros'),
+(null,'6','654 metros');
+
+insert into sensor values
+
+(null,'DHT11','11.00','ativo'),
+(null,'LM35','16.00','inativo'),
+(null,'DHT11','31.00','manutenção');
+
+select*from cliente;
+
+select*from estufa;
+
+select*from sensor;
+
+=======
 >>>>>>> 21f1a8030307afcb78a10db093e1b8c05b6bc0f6
+>>>>>>> 66b8288dd3dc273b2244e569d356488be87e3672

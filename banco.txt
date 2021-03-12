@@ -1,0 +1,58 @@
+create database mushsensors;
+use mushsensors;
+
+create table cliente (
+idCliente int primary key auto_increment,
+cpf char(11),
+nome varchar(50),
+senha varchar(20),
+estado char(2),
+cidade varchar(100),
+plano varchar(30),
+check (plano = 'mensal' or plano = 'trimestral' or plano = 'semestral' or plano = 'anual') 
+)auto_increment = 1700;
+
+create table sensor(
+idSensor int primary key auto_increment,
+nomeSensor varchar(40),
+temperatura float,
+statusSensor varchar(30),
+check (statusSensor = 'ativo' or statusSensor = 'inativo' or statusSensor = 'manutenção') 
+)auto_increment = 2700;
+
+create table estufa(
+idEstufa int primary key auto_increment,
+quantidadeDeSensores int,
+TamanhodaEstufa varchar (40)
+);
+
+insert into cliente values
+(null,'47918319231','Marcos','estrelinha123','RJ','Mauá','trimestral'),
+(null,'64354364355','Felipe','neymar123','SP','Ribeirão Pires','anual'),
+(null,'74563531343','Correia','skate123','MG','Santo André','mensal'),
+(null,'96435241241','Ferreira','boy123','ES','São Caetano','trimestral'),
+(null,'23423325242','Bruno','cabelo123','BA','Piraporinha','mensal');
+
+
+insert into estufa values
+
+(null,'3','303 metros'),
+(null,'4','432 metros'),
+(null,'7','765 metros'),
+(null,'9','932 metros'),
+(null,'6','654 metros');
+
+insert into sensor values
+
+(null,'DHT11','11.00','ativo'),
+(null,'LM35','16.00','inativo'),
+(null,'DHT11','31.00','manutenção');
+
+select*from cliente;
+
+select*from estufa;
+
+select*from sensor;
+
+
+
